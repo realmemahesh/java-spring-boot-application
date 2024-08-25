@@ -1,7 +1,6 @@
-FROM openjdk:11
-
+FROM openjdk:8-jdk-alpine
 WORKDIR /opt
 
-COPY ./target/vsm-0.0.1-SNAPSHOT.jar /opt/
+ADD target/spring-boot-hello-world-1.0.0-SNAPSHOT.jar /opt/app.jar
 
-ENTRYPOINT [ "java","-jar"."/opt/vsm-0.0.1-SNAPSHOT.jar" ]
+ENTRYPOINT ["java","-jar","/opt/app.jar"]
