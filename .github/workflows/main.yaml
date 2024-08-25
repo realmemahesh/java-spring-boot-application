@@ -16,5 +16,6 @@ jobs:
             java-version: '8'
             java-package: jdk
             architecture: x64
+            distribution: oracle
         - name: Run the Maven verify phase
           run: mvn clean package
