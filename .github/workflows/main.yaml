@@ -14,6 +14,7 @@ jobs:
           uses: actions/setup-java@v4
           with:
             java-version: '8'
+            java-package: jdk
             architecture: x64
         - name: Run the Maven verify phase
           run: mvn clean package
