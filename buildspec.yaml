@@ -8,8 +8,8 @@ phases:
   install:
     commands:
       - echo started install phase
-      - sudo yum install -y apache-maven
-      - sudo yum install java-1.8.0-devel
+      - apt-get update -y
+      - apt-get install -y maven
     finally:
       - echo completed install phase
   pre_build:
