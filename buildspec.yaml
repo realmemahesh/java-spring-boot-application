@@ -6,10 +6,10 @@ env:
 
 phases:
   install:
+    runtime-versions:
+          java: corretto8
     commands:
-      - echo started install phase
-      - apt-get update -y
-      - apt-get install -y maven
+    - echo installed java
     finally:
       - echo completed install phase
   pre_build:
