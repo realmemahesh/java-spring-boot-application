@@ -1,0 +1,38 @@
+version: 0.1
+
+env:
+  variables:
+    tag: v1
+
+phases:
+  install:
+    commands:
+      - echo started install phase
+      - sudo yum install -y apache-maven
+      - sudo yum install java-1.8.0-devel
+    finally:
+      - echo completed install phase
+  pre_build:
+    commands:
+      - echo started pre build phase
+      - mvn -version
+      - java -version
+    finally:
+    - echo pre build phase is done
+  build:
+    commands:
+    - echo starting mvn build
+    - mvn install
+    finally:
+    - echo build phase is done
+  post_build:
+    commands:
+    - echo starting post_build phase
+    - echo Build completed on `date`
+artifacts:
+  files:
+    - target/spring-boot-hello-world-1.0.0-SNAPSHOT.jar
+  discard-paths: yes
+cache:
+  paths:
+    - '/root/.m2/**/*'
