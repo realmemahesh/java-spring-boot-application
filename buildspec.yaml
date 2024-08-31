@@ -28,6 +28,10 @@ phases:
   post_build:
     commands:
     - echo starting post_build phase
+    - aws ecr get-login-password --region us-west-1 | docker login --username mahesh --password-stdin 026090544525.dkr.ecr.us-west-1.amazonaws.com
+    - docker build -t vsm:$tag .
+    - docker tag vsm:$tag 026090544525.dkr.ecr.us-west-1.amazonaws.com/vsm:$tag
+    - docker push 026090544525.dkr.ecr.us-west-1.amazonaws.com/vsm:$tag
     - echo Build completed on `date`
 artifacts:
   files:
